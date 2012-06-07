@@ -1,0 +1,27 @@
+{
+    "name": "lootils/archiver",
+    "description": "An abstraction library to interface with file archives.",
+    "type": "library",
+    "homepage": "https://github.com/RobLoach/archiver",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Rob Loach",
+            "email": "robloach@gmail.com",
+            "homepage": "http://robloach.net"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0"
+    },
+    "require-dev": {
+        "EHER/PHPUnit": "*",
+        "fabpot/php-cs-fixer": "*"
+    },
+    "suggest": {
+        "zip": "Allows interfacing with zip archives."
+    },
+    "autoload": {
+        "psr-0": { "Lootils\\Archiver": "src/" }
+    }
+}
