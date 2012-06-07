@@ -24,7 +24,7 @@ class TarArchive implements ArchiveInterface
      */
     public function __construct($path)
     {
-        $this->tar = new ArchiveTar($path);
+        $this->tar = new \Archive_Tar($path);
     }
 
     /**
