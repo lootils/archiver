@@ -7,25 +7,24 @@
 
 namespace Lootils\Archiver;
 
+use Lootils\Archiver\Tar\ArchiveTar;
+
 /**
  * Read from and manipulate a zip archive.
  */
-class ZipArchive implements ArchiveInterface
+class TarArchive implements ArchiveInterface
 {
     /**
      * The zip archive itself.
      */
-    protected $zip;
+    protected $tar;
 
     /**
      * Construct a new archive.
      */
     public function __construct($path)
     {
-        $this->zip = new \ZipArchive();
-        if ($this->zip->open($path, \ZipArchive::CREATE) !== TRUE) {
-            throw new ArchiveException('Cannot open ' . $path);
-        }
+        $this->tar = new ArchiveTar($path);
     }
 
     /**
@@ -33,28 +32,19 @@ class ZipArchive implements ArchiveInterface
      */
     public function add($file, $entry_name = null)
     {
-        // Make sure to adapt the entry name as the original filename.
-        if (!isset($entry_name)) {
-            $entry_name = basename($file);
-        }
-        $result = $this->zip->addFile($file, $entry_name);
-        if ($result === FALSE) {
-            throw new ArchiveException('Error adding ' . $file);
+        $result = $this->tar->addModify($file, '', dirname($file));
+        if ($result === false) {
+            throw new ArchiveException('Error adding file ' . $file);
         }
 
         return $this;
     }
 
     /**
-     * Remove the specified file from the archive.
+     * Files cannot be removed from the tar archive.
      */
     public function remove($entry)
     {
-        $result = $this->zip->deleteName($entry);
-        if ($result === FALSE) {
-            throw new ArchiveException('Error removing entry ' . $entry);
-        }
-
         return $this;
     }
 
@@ -63,8 +53,13 @@ class ZipArchive implements ArchiveInterface
      */
     public function extractTo($destination, $entries = array())
     {
-        $result = $this->zip->extractTo($destination, $entries);
-        if ($result === FALSE) {
+        $result = false;
+        if (isset($entries)) {
+            $result = $this->tar->extractList($files, $path);
+        } else {
+            $result = $this->tar->extract($path);
+        }
+        if ($result === false) {
             throw new ArchiveException('Error extracting archive.');
         }
 
@@ -77,10 +72,8 @@ class ZipArchive implements ArchiveInterface
     public function contents()
     {
         $files = array();
-
-        for ($i=0; $i < $this->zip->numFiles; $i++) {
-            $details = $this->zip->statIndex($i);
-            $files[$details['name']] = $details;
+        foreach ($this->tar->listContent() as $data) {
+          $files[$data['filename']] = $data;
         }
 
         return $files;
@@ -99,8 +92,8 @@ class ZipArchive implements ArchiveInterface
      */
     public function close()
     {
-        if ($this->zip) {
-            $this->zip->close();
+        if ($this->tar) {
+            unset($this->tar);
         }
     }
 }

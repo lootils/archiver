@@ -30,7 +30,7 @@ interface ArchiveInterface {
     /**
      * Extract the given files to the destination.
      */
-    public function extractTo($destination, $entries);
+    public function extractTo($destination, $files = array());
 
     /**
      * Retrieve an array of the archive contents.
