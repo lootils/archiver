@@ -41,6 +41,8 @@
 
 namespace Lootils\Archiver\Tar;
 
+use Lootils\Archiver\ArchiveException;
+
 define('ARCHIVE_TAR_ATT_SEPARATOR', 90001);
 define('ARCHIVE_TAR_END_BLOCK', pack("a512", ''));
 
@@ -93,6 +95,13 @@ class ArchiveTar
      * @var object PEAR_Error object
      */
     public $error_object=null;
+
+    /**
+     * Raises an error.
+     */
+    public function raiseError($message) {
+        throw new ArchiveException($message);
+    }
 
     // {{{ constructor
     /**
