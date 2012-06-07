@@ -3,6 +3,8 @@ Lootils Archiver
 
 An abstraction library to interface with file archives.
 
+[![Build Status](https://secure.travis-ci.org/RobLoach/archiver.png)](http://travis-ci.org/RobLoach/archiver)
+
 
 Installation
 -----------
