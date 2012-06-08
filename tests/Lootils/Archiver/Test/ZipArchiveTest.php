@@ -4,7 +4,8 @@ namespace Lootils\Archiver\Test;
 
 class ZipArchiveTest extends ArchiveTest
 {
-    public function setUp() {
+    public function setUp()
+    {
         parent::setUp();
 
         $this->class = 'Lootils\Archiver\ZipArchive';

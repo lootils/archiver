@@ -66,8 +66,7 @@ class ZipArchive implements ArchiveInterface
         $result = false;
         if (!empty($entries)) {
             $result = $this->zip->extractTo($destination, $entries);
-        }
-        else {
+        } else {
             $result = $this->zip->extractTo($destination);
         }
         if ($result === false) {

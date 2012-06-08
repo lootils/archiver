@@ -2,7 +2,6 @@
 
 namespace Lootils\Archiver\Test;
 
-use Lootils\Archiver\ArchiveException;
 
 /**
  * Generic test framework to test manipulation of file archives.
@@ -83,8 +82,7 @@ abstract class ArchiveTest extends \PHPUnit_Framework_TestCase
         $files = scandir($dir, 1);
         if ($files) {
             $this->assertEquals($files[0], 'php.png');
-        }
-        else {
+        } else {
             $this->fail('Temporary directory does not exist.');
         }
     }

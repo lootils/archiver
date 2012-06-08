@@ -7,7 +7,6 @@
 
 namespace Lootils\Archiver;
 
-use Lootils\Archiver\Tar\ArchiveTar;
 
 /**
  * Read from and manipulate a zip archive.
@@ -56,8 +55,7 @@ class TarArchive implements ArchiveInterface
         $result = false;
         if (!empty($entries)) {
             $result = $this->tar->extractList($entries, $destination);
-        }
-        else {
+        } else {
             $result = $this->tar->extract($destination, true);
         }
         if ($result === false) {
