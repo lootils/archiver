@@ -18,7 +18,8 @@
     },
     "require-dev": {
         "EHER/PHPUnit": "*",
-        "fabpot/php-cs-fixer": "*"
+        "fabpot/php-cs-fixer": "*",
+        "sami/sami": "*"
     },
     "suggest": {
         "zip": "Allows interfacing with zip archives."

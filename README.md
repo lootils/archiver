@@ -55,6 +55,10 @@ Fix code to code standards:
 
     php vendor/bin/php-cs-fixer fix .
 
+Generate code documentation:
+
+   php vendor/bin/sami.php render src/sami.php
+
 
 License
 ------
