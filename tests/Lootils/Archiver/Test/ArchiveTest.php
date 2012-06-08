@@ -2,6 +2,8 @@
 
 namespace Lootils\Archiver\Test;
 
+use Lootils\Archiver\ArchiveException;
+
 /**
  * Generic test framework to test manipulation of file archives.
  */
@@ -57,5 +59,33 @@ abstract class ArchiveTest extends \PHPUnit_Framework_TestCase
 
         // Compare the results.
         $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * Tests extracting an archive to a directory.
+     */
+    public function testExtractTo()
+    {
+        // Make sure we have a temporary directory to extract the archive.
+        $dir = tempnam(sys_get_temp_dir(), 'archiver');
+        if (file_exists($dir)) {
+            unlink($dir);
+        }
+        mkdir($dir, 0777, true);
+
+        // Load the archive.
+        $archive = new $this->class(__DIR__ . '/php.' . $this->extension);
+
+        // Extract to the temporary directory.
+        $archive->extractTo($dir);
+
+        // Check that the file is present.
+        $files = scandir($dir, 1);
+        if ($files) {
+            $this->assertEquals($files[0], 'php.png');
+        }
+        else {
+            $this->fail('Temporary directory does not exist.');
+        }
     }
 }

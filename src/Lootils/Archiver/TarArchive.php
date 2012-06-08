@@ -22,9 +22,9 @@ class TarArchive implements ArchiveInterface
     /**
      * Construct a new archive.
      */
-    public function __construct($path)
+    public function __construct($path, $option = null)
     {
-        $this->tar = new \Archive_Tar($path);
+        $this->tar = new \Archive_Tar($path, $option);
     }
 
     /**
@@ -54,10 +54,11 @@ class TarArchive implements ArchiveInterface
     public function extractTo($destination, $entries = array())
     {
         $result = false;
-        if (isset($entries)) {
-            $result = $this->tar->extractList($files, $path);
-        } else {
-            $result = $this->tar->extract($path);
+        if (!empty($entries)) {
+            $result = $this->tar->extractList($entries, $destination);
+        }
+        else {
+            $result = $this->tar->extract($destination, true);
         }
         if ($result === false) {
             throw new ArchiveException('Error extracting archive.');

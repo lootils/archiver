@@ -15,7 +15,7 @@ interface ArchiveInterface {
     /**
      * Construct a new archive.
      */
-    public function __construct($path);
+    public function __construct($path, $option = null);
 
     /**
      * Add the given file to the file archive.

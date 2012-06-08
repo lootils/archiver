@@ -9,8 +9,34 @@ An abstraction library to interface with file archives.
 Installation
 -----------
 
+Use [Composer](http://getcomposer.org) to retrieve Archiver's dependencies:
+
     curl -s http://getcomposer.org/installer | php
     php composer.phar install
+
+
+Usage
+-----
+
+Create a zip file:
+
+    $zip = \Lootils\Archiver\ZipArchive('myarchive.zip');
+    $zip->add('myfile.png');
+
+
+Extract a .tar archive:
+
+    $tar = \Lootils\Archiver\TarArchive('myarchive.tar');
+    $tar->extract('destination');
+
+
+List the contents of an archive:
+
+    $tar = \Lootils\Archiver\TarArchive('myarchive.tar');
+    $files = $tar->contents();
+    foreach ($files as $filename => $data) {
+       echo $filename . ' ';
+    }
 
 
 Development

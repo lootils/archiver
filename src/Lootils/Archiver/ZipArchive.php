@@ -20,10 +20,10 @@ class ZipArchive implements ArchiveInterface
     /**
      * Construct a new archive.
      */
-    public function __construct($path)
+    public function __construct($path, $option = \ZipArchive::CREATE)
     {
         $this->zip = new \ZipArchive();
-        if ($this->zip->open($path, \ZipArchive::CREATE) !== TRUE) {
+        if ($this->zip->open($path, $option) !== true) {
             throw new ArchiveException('Cannot open ' . $path);
         }
     }
@@ -38,7 +38,7 @@ class ZipArchive implements ArchiveInterface
             $entry_name = basename($file);
         }
         $result = $this->zip->addFile($file, $entry_name);
-        if ($result === FALSE) {
+        if ($result === false) {
             throw new ArchiveException('Error adding ' . $file);
         }
 
@@ -51,7 +51,7 @@ class ZipArchive implements ArchiveInterface
     public function remove($entry)
     {
         $result = $this->zip->deleteName($entry);
-        if ($result === FALSE) {
+        if ($result === false) {
             throw new ArchiveException('Error removing entry ' . $entry);
         }
 
@@ -63,8 +63,14 @@ class ZipArchive implements ArchiveInterface
      */
     public function extractTo($destination, $entries = array())
     {
-        $result = $this->zip->extractTo($destination, $entries);
-        if ($result === FALSE) {
+        $result = false;
+        if (!empty($entries)) {
+            $result = $this->zip->extractTo($destination, $entries);
+        }
+        else {
+            $result = $this->zip->extractTo($destination);
+        }
+        if ($result === false) {
             throw new ArchiveException('Error extracting archive.');
         }
 
