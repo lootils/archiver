@@ -104,8 +104,9 @@ class ZipArchive implements ArchiveInterface
      */
     public function close()
     {
-        if ($this->zip) {
+        if (isset($this->zip)) {
             $this->zip->close();
+            $this->zip = null;
         }
     }
 }

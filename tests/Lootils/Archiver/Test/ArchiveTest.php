@@ -86,4 +86,24 @@ abstract class ArchiveTest extends \PHPUnit_Framework_TestCase
             $this->fail('Temporary directory does not exist.');
         }
     }
+
+    /**
+     * Tests removing a file from an archive.
+     */
+    public function testRemove()
+    {
+        // Copy the archive to a temporary file.
+        $temp_file = tempnam(sys_get_temp_dir(), 'archiver');
+        copy(__DIR__.'/php.'.$this->extension, $temp_file);
+
+        // Remove php.png from the archive.
+        $archive = new $this->class($temp_file);
+        $archive->remove('php.png');
+        $archive->close();
+
+        // Re-open the archive, and check that png.png is gone.
+        $archive = new $this->class($temp_file);
+        $result = $archive->contents();
+        $this->assertEquals(array(), $result);
+    }
 }
