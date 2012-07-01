@@ -3,7 +3,7 @@ Lootils Archiver
 
 An abstraction library to interface with file archives.
 
-[![Build Status](https://secure.travis-ci.org/RobLoach/archiver.png)](http://travis-ci.org/RobLoach/archiver)
+[![Build Status](https://secure.travis-ci.org/lootils/archiver.png?branch=master)](http://travis-ci.org/lootils/archiver)
 
 
 Installation
@@ -57,7 +57,7 @@ Fix code to code standards:
 
 Generate code documentation:
 
-   php vendor/bin/sami.php render src/sami.php
+    php vendor/bin/sami.php render src/sami.php
 
 
 License
