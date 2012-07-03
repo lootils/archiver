@@ -17,7 +17,7 @@
     "require-dev": {
         "EHER/PHPUnit": "*",
         "fabpot/php-cs-fixer": "*",
-        "pear-pear/Archive_Tar": "1.3.*"
+        "pear/Archive_Tar": "1.3.*"
     },
     "suggest": {
         "zip": "Allows interfacing with zip archives."
@@ -27,8 +27,20 @@
     },
     "repositories": [
         {
-            "type": "pear",
-            "url": "http://pear.php.net"
+            "type": "package",
+            "package": {
+                "name": "pear/Archive_Tar",
+                "version": "1.3.10",
+                "dist": {
+                    "url": "https://github.com/pear/Archive_Tar/zipball/master",
+                    "type": "zip"
+                },
+                "source": {
+                    "url": "git://github.com/pear/Archive_Tar.git",
+                    "type": "git",
+                    "reference": "master"
+                }
+            }
         }
     ]
 }

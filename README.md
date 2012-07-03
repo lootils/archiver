@@ -50,7 +50,7 @@ To install development tools, run the following:
 
 Run tests:
 
-    php vendor/bin/phpunit
+    php vendor/bin/phpunit -c tests
 
 
 Fix code standards:
