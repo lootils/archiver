@@ -2,7 +2,6 @@
 
 namespace Lootils\Archiver\Test;
 
-
 /**
  * Generic test framework to test manipulation of file archives.
  */

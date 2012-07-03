@@ -10,8 +10,8 @@ namespace Lootils\Archiver;
 /**
  * Common interface for all file archives.
  */
-interface ArchiveInterface {
-
+interface ArchiveInterface
+{
     /**
      * Construct a new archive.
      */

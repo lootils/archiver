@@ -7,6 +7,7 @@
 
 namespace Lootils\Archiver;
 
+use Lootils\Archiver\ArchiveTar\Tar;
 
 /**
  * Read from and manipulate a zip archive.
@@ -23,7 +24,7 @@ class TarArchive implements ArchiveInterface
      */
     public function __construct($path, $option = null)
     {
-        $this->tar = new \Archive_Tar($path, $option);
+        $this->tar = new Tar($path, $option);
     }
 
     /**

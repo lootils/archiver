@@ -15,7 +15,8 @@ class TarArchiveTest extends ArchiveTest
     /**
      * Tar does not support removing files, so we just skip this test.
      */
-    public function testRemove() {
+    public function testRemove()
+    {
         return true;
     }
 }
