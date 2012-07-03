@@ -164,7 +164,7 @@ class Tar
                 $extname = 'bz2';
 
             if (!extension_loaded($extname)) {
-                PEAR::loadExtension($extname);
+                $this->loadExtension($extname);
             }
             if (!extension_loaded($extname)) {
                 $this->_error("The extension '$extname' couldn't be found.\n".
@@ -176,6 +176,40 @@ class Tar
         }
     }
     // }}}
+
+    /**
+    * OS independent PHP extension load. Remember to take care
+    * on the correct extension name for case sensitive OSes.
+    * The function is the copy of PEAR::loadExtension().
+    *
+    * @param string $ext The extension name
+    * @return bool Success or not on the dl() call
+    */
+    function loadExtension($ext)
+    {
+        if (!extension_loaded($ext)) {
+            // if either returns true dl() will produce a FATAL error, stop that
+            if ((ini_get('enable_dl') != 1) || (ini_get('safe_mode') == 1)) {
+                 return false;
+             }
+
+            if (OS_WINDOWS) {
+                $suffix = '.dll';
+            } elseif (PHP_OS == 'HP-UX') {
+                $suffix = '.sl';
+            } elseif (PHP_OS == 'AIX') {
+                $suffix = '.a';
+            } elseif (PHP_OS == 'OSX') {
+                $suffix = '.bundle';
+            } else {
+                $suffix = '.so';
+            }
+
+            return @dl('php_'.$ext.$suffix) || @dl($ext.$suffix);
+        }
+
+        return true;
+    }
 
     // {{{ destructor
     public function __destruct()
@@ -657,14 +691,14 @@ class Tar
     // {{{ _error()
     public function _error($p_message)
     {
-        $this->error_object = &$this->raiseError($p_message);
+        $this->error_object = $p_message;
     }
     // }}}
 
     // {{{ _warning()
     public function _warning($p_message)
     {
-        $this->error_object = &$this->raiseError($p_message);
+        $this->error_object = $p_message;
     }
     // }}}
 
