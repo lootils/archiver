@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Provides interaction with a Zip archive.
+ * Provides interaction with a Tar archive.
  */
 
 namespace Lootils\Archiver;
@@ -10,7 +10,7 @@ namespace Lootils\Archiver;
 use Lootils\Archiver\ArchiveTar\Tar;
 
 /**
- * Read from and manipulate a zip archive.
+ * Read from and manipulate a tar archive.
  */
 class TarArchive implements ArchiveInterface
 {
@@ -80,7 +80,7 @@ class TarArchive implements ArchiveInterface
     }
 
     /**
-     * Closes the zip archive resource.
+     * Closes the tar archive resource.
      */
     public function __destruct()
     {
@@ -88,7 +88,7 @@ class TarArchive implements ArchiveInterface
     }
 
     /**
-     * Release the zip resource.
+     * Release the tar resource.
      */
     public function close()
     {

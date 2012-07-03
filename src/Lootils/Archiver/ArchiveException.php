@@ -10,4 +10,6 @@ namespace Lootils\Archiver;
 /**
  * The Archive exception class is thrown when errors are found.
  */
-class ArchiveException extends \Exception { }
+class ArchiveException extends \Exception
+{
+}
