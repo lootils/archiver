@@ -42,5 +42,6 @@
                 }
             }
         }
-    ]
+    ],
+    "minimum-stability": "dev"
 }
