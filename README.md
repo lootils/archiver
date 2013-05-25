@@ -11,11 +11,12 @@ Installation
 
 Install Lootils Archiver by adding `lootils/archiver` to your *composer.json*
 file.
-
 ```json
+{
     "require": {
         "lootils/archiver": "*"
     }
+}
 ```
 
 
@@ -23,38 +24,40 @@ Usage
 -----
 
 Create a zip file:
-
-    $zip = \Lootils\Archiver\ZipArchive('myarchive.zip');
-    $zip->add('myfile.png');
-
+```php
+$zip = \Lootils\Archiver\ZipArchive('myarchive.zip');
+$zip->add('myfile.png');
+```
 
 Extract a .tar archive:
-
-    $tar = \Lootils\Archiver\TarArchive('myarchive.tar');
-    $tar->extract('destination');
-
+```php
+$tar = \Lootils\Archiver\TarArchive('myarchive.tar');
+$$tar->extract('destination');
+```
 
 List the contents of an archive:
-
-    $tar = \Lootils\Archiver\TarArchive('myarchive.tar');
-    $files = $tar->contents();
-    foreach ($files as $filename => $data) {
-       echo $filename . ' ';
-    }
+```php
+$tar = \Lootils\Archiver\TarArchive('myarchive.tar');
+$files = $tar->contents();
+foreach ($files as $filename => $data) {
+    echo $filename . ' ';
+}
+```
 
 
 Development
 ----------
 
 To install development tools, run the following:
-
-    curl -s http://getcomposer.org/installer | php
-    php composer.phar install
-
+```bash
+curl -s http://getcomposer.org/installer | php
+php composer.phar install
+```
 
 Run tests:
-
-    phpunit
+```bash
+phpunit
+```
 
 
 License
