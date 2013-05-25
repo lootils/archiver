@@ -9,10 +9,14 @@ An abstraction library to interface with file archives.
 Installation
 -----------
 
-Use [Composer](http://getcomposer.org) to retrieve Archiver's dependencies:
+Install Lootils Archiver by adding `lootils/archiver` to your *composer.json*
+file.
 
-    curl -s http://getcomposer.org/installer | php
-    php composer.phar install
+```json
+    "require": {
+        "lootils/archiver": "*"
+    }
+```
 
 
 Usage
@@ -45,21 +49,16 @@ Development
 To install development tools, run the following:
 
     curl -s http://getcomposer.org/installer | php
-    php composer.phar install --dev
+    php composer.phar install
 
 
 Run tests:
 
-    php vendor/bin/phpunit -c tests
-
-
-Fix code standards:
-
-    php vendor/bin/php-cs-fixer fix .
+    phpunit
 
 
 License
-------
+-------
 
 Lootils Archiver is licensed under the New BSD License - see the LICENSE file
 for details.
