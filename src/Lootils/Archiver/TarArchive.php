@@ -7,7 +7,7 @@
 
 namespace Lootils\Archiver;
 
-use Lootils\Archiver\ArchiveTar\Tar;
+use \Archive_Tar as Tar;
 
 /**
  * Read from and manipulate a tar archive.

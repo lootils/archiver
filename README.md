@@ -45,6 +45,13 @@ foreach ($files as $filename => $data) {
 ```
 
 
+Dependencies
+------------
+
+In order to interact with tar archives, make sure to add `pear/archive_tar` to
+your *composer.json* file.
+
+
 Development
 ----------
 
@@ -63,5 +70,4 @@ phpunit
 License
 -------
 
-Lootils Archiver is licensed under the New BSD License - see the LICENSE file
-for details.
+This library is available under a MIT license.
