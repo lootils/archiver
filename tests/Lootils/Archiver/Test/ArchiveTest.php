@@ -23,7 +23,7 @@ abstract class ArchiveTest extends \PHPUnit_Framework_TestCase
     public function testContents()
     {
         // Open the zip archive.
-        $archive = new $this->class(__DIR__.'/php.'.$this->extension);
+        $archive = new $this->class(__DIR__.'/Resources/php.'.$this->extension);
 
         // Construct the expected results.
         $expected = array('php.png');
@@ -46,7 +46,7 @@ abstract class ArchiveTest extends \PHPUnit_Framework_TestCase
 
         // Create the archive and add php.png.
         $archive = new $this->class($temp_file);
-        $archive->add(__DIR__.'/php.png');
+        $archive->add(__DIR__.'/Resources/php.png');
 
         // Construct the expected results.
         $expected = array('php.png');
@@ -72,7 +72,7 @@ abstract class ArchiveTest extends \PHPUnit_Framework_TestCase
         mkdir($dir, 0777, true);
 
         // Load the archive.
-        $archive = new $this->class(__DIR__ . '/php.' . $this->extension);
+        $archive = new $this->class(__DIR__ . '/Resources/php.' . $this->extension);
 
         // Extract to the temporary directory.
         $archive->extractTo($dir);
@@ -93,7 +93,7 @@ abstract class ArchiveTest extends \PHPUnit_Framework_TestCase
     {
         // Copy the archive to a temporary file.
         $temp_file = tempnam(sys_get_temp_dir(), 'archiver');
-        copy(__DIR__.'/php.'.$this->extension, $temp_file);
+        copy(__DIR__.'/Resources/php.'.$this->extension, $temp_file);
 
         // Remove php.png from the archive.
         $archive = new $this->class($temp_file);
