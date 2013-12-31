@@ -13,7 +13,7 @@ class PharArchiveTest extends ArchiveTest
     }
 
     /**
-     * PharArchive currently does support removing the entries.
+     * PharArchive currently does not support removing the entries.
      */
     public function testRemove()
     {

@@ -10,7 +10,7 @@ namespace Lootils\Archiver;
 use Phar;
 
 /**
- * Read from and manipulate a zip archive.
+ * Read from and manipulate a phar archive.
  */
 class PharArchive implements ArchiveInterface
 {
