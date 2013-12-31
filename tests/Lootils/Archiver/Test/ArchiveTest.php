@@ -46,7 +46,7 @@ abstract class ArchiveTest extends \PHPUnit_Framework_TestCase
 
         // Create the archive and add php.png.
         $archive = new $this->class($temp_file);
-        $archive->add(__DIR__.'/Resources/php.png');
+        $archive->add(__DIR__.'/Resources/php.png', 'php.png');
 
         // Construct the expected results.
         $expected = array('php.png');
