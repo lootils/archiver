@@ -11,4 +11,12 @@ class PharArchiveTest extends ArchiveTest
         $this->class = 'Lootils\Archiver\PharArchive';
         $this->extension = 'phar';
     }
+
+    /**
+     * PharArchive currently does support removing the entries.
+     */
+    public function testRemove()
+    {
+        return true;
+    }
 }
