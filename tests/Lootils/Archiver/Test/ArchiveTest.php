@@ -42,11 +42,11 @@ abstract class ArchiveTest extends \PHPUnit_Framework_TestCase
     public function testAdd()
     {
         // Create a temporary file.
-        $temp_file = tempnam(sys_get_temp_dir(), 'archiver');
+        $temp_file = tempnam(sys_get_temp_dir(), 'archiver') . '.' . $this->extension;
 
         // Create the archive and add php.png.
         $archive = new $this->class($temp_file);
-        $archive->add(__DIR__.'/Resources/php.png');
+        $archive->add(__DIR__.'/Resources/php.png', 'php.png');
 
         // Construct the expected results.
         $expected = array('php.png');
@@ -65,7 +65,7 @@ abstract class ArchiveTest extends \PHPUnit_Framework_TestCase
     public function testExtractTo()
     {
         // Make sure we have a temporary directory to extract the archive.
-        $dir = tempnam(sys_get_temp_dir(), 'archiver');
+        $dir = tempnam(sys_get_temp_dir(), 'archiver') . '.' . $this->extension;
         if (file_exists($dir)) {
             unlink($dir);
         }
@@ -92,7 +92,7 @@ abstract class ArchiveTest extends \PHPUnit_Framework_TestCase
     public function testRemove()
     {
         // Copy the archive to a temporary file.
-        $temp_file = tempnam(sys_get_temp_dir(), 'archiver');
+        $temp_file = tempnam(sys_get_temp_dir(), 'archiver') . '.' . $this->extension;
         copy(__DIR__.'/Resources/php.'.$this->extension, $temp_file);
 
         // Remove php.png from the archive.

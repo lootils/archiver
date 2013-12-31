@@ -25,20 +25,20 @@ Usage
 
 Create a zip file:
 ```php
-$zip = \Lootils\Archiver\ZipArchive('myarchive.zip');
-$zip->add('myfile.png');
+$archive = \Lootils\Archiver\ZipArchive('myarchive.zip');
+$archive->add('myfile.png');
 ```
 
 Extract a .tar archive:
 ```php
-$tar = \Lootils\Archiver\TarArchive('myarchive.tar');
-$$tar->extract('destination');
+$archive = \Lootils\Archiver\TarArchive('myarchive.tar');
+$archive->extract('destination');
 ```
 
-List the contents of an archive:
+List the contents of a .phar file:
 ```php
-$tar = \Lootils\Archiver\TarArchive('myarchive.tar');
-$files = $tar->contents();
+$archive = \Lootils\Archiver\PharArchive('myarchive.phar');
+$files = $archive->contents();
 foreach ($files as $filename => $data) {
     echo $filename . ' ';
 }
