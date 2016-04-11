@@ -1,7 +1,11 @@
 {
     "name": "lootils/archiver",
-    "description": "An abstraction library to interface with file archives.",
     "type": "library",
+    "description": "An abstraction library to interface with file archives.",
+    "keywords": [
+        "lootils",
+        "archiver"
+    ],
     "homepage": "https://github.com/lootils/archiver",
     "license": "MIT",
     "authors": [
@@ -18,16 +22,16 @@
         "pear/archive_tar": "1.4.*",
         "phpunit/phpunit": "5.0.*"
     },
-    "scripts": {
-        "test": "phpunit"
-    },
-    "suggest": {
-        "zip": "Allows interfacing with zip archives.",
-        "pear/archive_tar": "Allows interfacing with tar archives."
-    },
     "autoload": {
         "psr-0": {
             "Lootils\\Archiver": "src/"
         }
-    }
+    },
+    "scripts": {
+        "test": "phpunit"
+    },
+    "suggest": {
+        "ext-zip": "Allows interfacing with zip archives.",
+        "pear/archive_tar": "Allows interfacing with tar archives."
+    },
 }
