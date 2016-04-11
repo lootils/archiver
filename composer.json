@@ -23,8 +23,13 @@
         "phpunit/phpunit": "5.0.*"
     },
     "autoload": {
-        "psr-0": {
-            "Lootils\\Archiver": "src/"
+        "psr-4": {
+            "Lootils\\Archiver\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Lootils\\Archiver\\": "tests"
         }
     },
     "scripts": {
@@ -33,5 +38,5 @@
     "suggest": {
         "ext-zip": "Allows interfacing with zip archives.",
         "pear/archive_tar": "Allows interfacing with tar archives."
-    },
+    }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Lootils\Archiver\Test;
+namespace Lootils\Archiver;
 
 /**
  * Generic test framework to test manipulation of file archives.

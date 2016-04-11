@@ -7,6 +7,8 @@
 
 namespace Lootils\Archiver;
 
+use \ZipArchive as Zip;
+
 /**
  * Read from and manipulate a zip archive.
  */
@@ -20,9 +22,9 @@ class ZipArchive implements ArchiveInterface
     /**
      * Construct a new archive.
      */
-    public function __construct($path, $option = \ZipArchive::CREATE)
+    public function __construct($path, $option = Zip::CREATE)
     {
-        $this->zip = new \ZipArchive();
+        $this->zip = new Zip();
         if ($this->zip->open($path, $option) !== true) {
             throw new ArchiveException('Cannot open ' . $path);
         }
