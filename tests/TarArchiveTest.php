@@ -1,6 +1,6 @@
 <?php
 
-namespace Lootils\Archiver\Test;
+namespace Lootils\Archiver;
 
 class TarArchiveTest extends ArchiveTest
 {
